@@ -1,0 +1,28 @@
+table {
+    background-color : white;
+    width: 1000px;
+    color: black;
+
+}
+body {
+    background-color : grey;
+}
+.navbar {
+    background-color: white ;
+    font-weight: bold;
+    height: auto;
+}
+
+nav {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+.scrolled {
+    background-color: red;
+    padding-top: 0;
+}
+
+/* footer */
+
+.gambar1 img {
+    width: 50px;
+}
