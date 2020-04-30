@@ -72,8 +72,6 @@ if (isset($_POST['tambah'])) {
       <button type="submit" name="tambah" class="btn btn-success">Tambah Data!</button>
     </div>
   </form>
-
-  </form>
 </body>
 
 </html>
