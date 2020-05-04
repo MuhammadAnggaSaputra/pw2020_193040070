@@ -1,18 +1,19 @@
 <?php
-require 'functions.php';
+session_start();
 
-if (isset($_GET['cari'])) {
-  $keyword = $_GET['keyword'];
-  $pakaian = query("SELECT * FROM pakaian WHERE 
-  picture LIKE '%$keyword%' OR
-  brand LIKE '%$keyword%' OR
-  ingredient LIKE '%$keyword%' OR
-  size LIKE '%$keyword%' OR
-  colour LIKE '%$keyword%' OR
-  price LIKE '$%keyword%' ");
-} else {
-  $pakaian = query("SELECT * FROM pakaian");
+if (!isset($_SESSION['login'])) {
+  header("Location: php/login.php");
+  exit;
 }
+
+require 'php/functions.php';
+$mahasiswa = query("SELECT * FROM mahasiswa");
+
+// ketika tombol dicari di klik
+if (isset($_POST['cari'])) {
+  $mahasiswa = cari($_POST['keyword']);
+}
+
 ?>
 
 
@@ -27,7 +28,7 @@ if (isset($_GET['cari'])) {
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../css/style2.css">
+  <link rel="stylesheet" href="css/style3.css">
 </head>
 
 <body>
@@ -35,7 +36,7 @@ if (isset($_GET['cari'])) {
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../assets/img/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(img/logo.png);"></a>
         <ul class="list-unstyled components mb-5">
           <li class="active">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
@@ -111,70 +112,66 @@ if (isset($_GET['cari'])) {
               <li class="nav-item">
                 <a class="nav-link" href="#"></a>
               </li>
+              <button>
+                <a href="php/logout.php">Logout</a>
+              </button>
             </ul>
           </div>
         </div>
       </nav>
 
-      <h2 class="mb-4">Zalora Store!</h2>
+      <h2 class="mb-4">Daftar Mahasiswa Universitas Pasundan</h2>
 
       <div class="row mb-3">
         <button>
-          <a href="tambah.php">Tambah Data</a>
+          <a href="php/tambah.php">Tambah Data</a>
         </button>
       </div>
 
-      <div class="row mb-3">
-        <form action="" method="get">
-          <input type="text" name="keyword">
-          <button type="submit" name="cari">Cari</button>
-        </form>
-      </div>
+      <form action="" method="POST">
+        <input type="text" name="keyword" size="30" placeholder="Masukkan Keyword Pencarian" autocomplete="off" autofocus>
+        <button type="submit" name="cari">Cari</button>
+      </form>
+      <br>
 
-      <table border="2" align="center">
+      <table border="1" cellpadding="10" cellspacing="0">
         <tr>
           <th>#</th>
-          <th>Opsi</th>
-          <th>Picture</th>
-          <th>Brand</th>
-          <th>Ingredient</th>
-          <th>Size</th>
-          <th>Colour</th>
-          <th>Price</th>
+          <th>Gambar</th>
+          <th>Nama</th>
+          <th>Aksi</th>
         </tr>
 
-        <?php if (empty($pakaian)) : ?>
+        <?php if (empty($mahasiswa)) : ?>
           <tr>
-            <td colspan="8">
-              <h1>Data tidak ditemukan</h1>
+            <td colspan="4">
+              <h3>Data Tidak Ditemukan!</h3>
             </td>
           </tr>
-        <?php else :  ?>
-          <?php $i = 1; ?>
-          <?php foreach ($pakaian as $pkn) :  ?>
-            <tr style="text-align: center">
-              <td><?= $i++ ?></td>
-              <td>
-                <a href="ubah.php?id=<?= $pkn['id']; ?>">Ubah</a> ||
-                <a href="hapus.php?id=<?= $pkn['id']; ?>" onclick="return confirm('Yakin Mau di Hapus ?')">Hapus</a>
-              </td>
-              <td><img src="../assets/img/<?= $pkn['picture'] ?>" alt=""></td>
-              <td><?= $pkn['brand']; ?></td>
-              <td><?= $pkn['ingredient']; ?></td>
-              <td><?= $pkn['size']; ?></td>
-              <td><?= $pkn['colour']; ?></td>
-              <td><?= $pkn['price']; ?></td>
-            </tr>
-          <?php endforeach; ?>
         <?php endif; ?>
+
+        <?php $i = 1;
+        foreach ($mahasiswa as $mhs) : ?>
+          <tr>
+            <td>
+              <?= $i++; ?></td>
+            <td>
+              <img src="img/<?= $mhs['GAMBAR']; ?>">
+            </td>
+            <td><?= $mhs['NAMA']; ?></td>
+            <td>
+              <a href="php/detail.php?id=<?= $mhs['ID']; ?>">Lihat Detail</a>
+            </td>
+          </tr>
+        <?php endforeach; ?>
       </table>
     </div>
   </div>
 
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/popper.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
