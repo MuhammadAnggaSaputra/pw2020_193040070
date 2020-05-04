@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2020 at 07:46 PM
+-- Generation Time: May 04, 2020 at 09:34 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -42,7 +42,7 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`ID`, `NAMA`, `NRP`, `EMAIL`, `JURUSAN`, `GAMBAR`) VALUES
-(1, 'Dimas Nanda Herlambang', '193040040', 'dimas@unpas.ac.id', 'Teknik Informatika', 'foto1.jpg'),
+(1, 'Dimas Nanda Herlamabang', '193040040', 'dimas@unpas.ac.id', 'Teknik Informatika', 'foto1.jpg'),
 (2, 'Muhammad Viqri Febriana', '193040041', 'viqri@unpas.ac.id', 'Teknik Informatika', 'foto2.jpg'),
 (3, 'Suhendani', '193040042', 'suhendani@unpas.ac.id', 'Teknik Informatika', 'foto3.jpg'),
 (4, 'Herlan Nurachman', '193040043', 'herlan@unpas.ac.id', 'Teknik Informatika', 'foto4.jpg'),
@@ -73,6 +73,26 @@ INSERT INTO `mahasiswa` (`ID`, `NAMA`, `NRP`, `EMAIL`, `JURUSAN`, `GAMBAR`) VALU
 (29, 'Rofil Rusmeina', '193040072', 'rofi@unpas.ac.id', 'Teknik Informatika', 'foto29.jpg'),
 (30, 'Hannan Fakhrul Hakim', '193040073', 'hannan@unpas.ac.id', 'Teknik Informatika', 'foto30.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`) VALUES
+(1, 'admin', '12345'),
+(2, 'angga', 'khususadmin');
+
 --
 -- Indexes for dumped tables
 --
@@ -84,6 +104,12 @@ ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -91,7 +117,13 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
