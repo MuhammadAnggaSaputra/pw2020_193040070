@@ -119,6 +119,9 @@ if (isset($_GET['cari'])) {
               <li class="nav-item">
                 <a class="nav-link" href="#"></a>
               </li>
+              <a href="logout.php">
+                <button type="logout">logout</button>
+              </a>
             </ul>
           </div>
         </div>
@@ -126,9 +129,7 @@ if (isset($_GET['cari'])) {
 
       <h2 class="mb-4">Zalora Store!</h2>
 
-      <a href="logout.php">
-        <button type="logout">logout</button>
-      </a>
+
 
       <div class="row mb-3">
         <button>
