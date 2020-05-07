@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2020 at 09:34 AM
+-- Generation Time: May 07, 2020 at 02:40 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -90,8 +90,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'admin', '12345'),
-(2, 'angga', 'khususadmin');
+(3, 'pw', '$2y$10$0Nc/1Oe5hHVp11E.zFQvAeNsZ.5cZ1qo7F8QE6N9whuGFvciz3LN6'),
+(4, 'admin', '$2y$10$NH.95EXhntViNMRPSDzn8u4s5.pdZVrf0PL4tmLZMQBAVcweeszqu');
 
 --
 -- Indexes for dumped tables
@@ -117,13 +117,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
