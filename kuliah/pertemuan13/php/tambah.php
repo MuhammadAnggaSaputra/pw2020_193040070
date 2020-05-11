@@ -37,7 +37,7 @@ if (isset($_POST['tambah'])) {
 </head>
 
 <body style="background-color: grey">
-  <form action="" method="POST" class="ml-5 mt-3">
+  <form action="" method="POST" enctype="multipart/form-data" class="ml-5 mt-3">
     <div class="form-group">
       <label>
         Nama :
@@ -65,7 +65,7 @@ if (isset($_POST['tambah'])) {
     <div class="form-group">
       <label>
         Gambar :
-        <input type="text" name="GAMBAR" class="form-control" required>
+        <input type="file" name="GAMBAR" class="form-control">
       </label>
     </div>
     <div class="form-group">
