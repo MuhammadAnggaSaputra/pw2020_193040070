@@ -65,13 +65,17 @@ if (isset($_POST['tambah'])) {
     <div class="form-group">
       <label>
         Gambar :
-        <input type="file" name="GAMBAR" class="form-control">
+        <input type="file" name="GAMBAR" class="gambar" onchange="previewImage()">
       </label>
+      <img src="../img/nophoto.jpg" width="120" style="display: block;" class="img-preview">
     </div>
     <div class="form-group">
       <button type="submit" name="tambah" class="btn btn-success">Tambah Data!</button>
     </div>
   </form>
+
+  <!-- javaScript -->
+  <script src="../js/script.js"></script>
 </body>
 
 </html>
